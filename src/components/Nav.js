@@ -10,26 +10,12 @@ const Navigation = props => {
       <Navbar inverse collapseOnSelect>
         <Navbar.Header>
           <Navbar.Brand>
-            <Link to={'/'}>React Boilerplate</Link>
+            <Link to={'/'}>IoT Dashboard</Link>
           </Navbar.Brand>
           <Navbar.Toggle />
         </Navbar.Header>
         <Navbar.Collapse>
-          <Nav>
-            <LinkContainer to='/' exact>
-              <NavItem>Home</NavItem>
-            </LinkContainer>
-            <LinkContainer to='/async' exact>
-              <NavItem>Async</NavItem>
-            </LinkContainer>
-            <NavDropdown eventKey={3} title="Dropdown" id="basic-nav-dropdown">
-              <MenuItem eventKey={3.1}>Action</MenuItem>
-              <MenuItem eventKey={3.2}>Another action</MenuItem>
-            </NavDropdown>
-          </Nav>
           <Nav pullRight>
-            <NavItem eventKey={1} href="#">Link Right</NavItem>
-            <NavItem eventKey={2} href="#">Link Right</NavItem>
           </Nav>
         </Navbar.Collapse>
       </Navbar>
