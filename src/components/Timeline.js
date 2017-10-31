@@ -15,11 +15,15 @@ const BlockList = SortableContainer(({blocks}) => {
 })
 
 
+const cancelSorting = (ev) => {
+  return ev.target.className === 'block-resize-handle'
+}
+
 export default ({blocks, reorderProgram}) => {
 
   return (
     <div className='timeline-container'>
-      <BlockList blocks={blocks} axis='x' onSortEnd={reorderProgram}/>
+      <BlockList blocks={blocks} axis='x' onSortEnd={reorderProgram} shouldCancelStart={cancelSorting}/>
     </div>
   )
 }

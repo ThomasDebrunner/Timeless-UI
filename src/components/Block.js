@@ -12,6 +12,7 @@ export default ({name, duration, scale=100}) => {
   return (
     <div className='block' style={getStyle(duration)}>
       {name}
+      <div className='block-resize-handle'></div>
     </div>
   )
 
