@@ -1,17 +1,25 @@
 import React from 'react'
-
 import Block from './Block'
+import {SortableContainer, SortableElement, arrayMove} from 'react-sortable-hoc';
 
-export default ({blocks}) => {
+const SortableBlock = SortableElement(({block}) => (<Block name={block.name} duration={block.duration}></Block>))
+
+const BlockList = SortableContainer(({blocks}) => {
+  return (
+    <ul>
+      {
+        blocks.map((block, idx) => (<SortableBlock block={block} index={idx} key={idx}/>))
+      }
+    </ul>
+  )
+})
+
+
+export default ({blocks, reorderProgram}) => {
 
   return (
     <div className='timeline-container'>
-      {
-        blocks.map((block, idx) => {
-          return (<Block name={block.name} duration={block.duration} key={idx}></Block>)
-        })
-      }
+      <BlockList blocks={blocks} axis='x' onSortEnd={reorderProgram}/>
     </div>
   )
-
 }

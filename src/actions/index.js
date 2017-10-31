@@ -1,11 +1,11 @@
-import { 
-  INCREMENT,
+import {
+  REORDER_PROGRAM,
   FETCH_INFO
 } from './types'
 
-export const increment = (value) => ({
-  type: INCREMENT,
-  value
+export const reorderProgram = (ev) => ({
+  type: REORDER_PROGRAM,
+  ev
 })
 
 export const fetchInfo = (userId) => ({
