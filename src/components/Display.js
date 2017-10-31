@@ -11,8 +11,6 @@ export default (props) => {
         () => Math.floor(Math.random() * 360))));
 
 
-  console.log(state)
-
   return (
     <div className='display-container'>
       {

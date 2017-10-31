@@ -10,7 +10,7 @@ const Navigation = props => {
       <Navbar inverse collapseOnSelect>
         <Navbar.Header>
           <Navbar.Brand>
-            <Link to={'/'}>Billion Dashboard</Link>
+            <Link to={'/'}>Timeless</Link>
           </Navbar.Brand>
           <Navbar.Toggle />
         </Navbar.Header>

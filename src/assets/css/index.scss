@@ -1,9 +1,16 @@
+@import 'timeline.scss';
+@import 'block.scss';
+
 body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
 }
 
+.custom-container {
+  margin-left: 10px;
+  margin-right: 10px;
+}
 
 .display-container {
   line-height: 0;

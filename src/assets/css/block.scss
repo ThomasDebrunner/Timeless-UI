@@ -1,0 +1,10 @@
+@import 'constants.scss';
+
+.block {
+  display: inline-block;
+  height: 100%;
+  padding: 10px;
+  background: $yellow;
+  border: 1px solid darken( $yellow, 10% );
+  overflow: hidden;
+}
