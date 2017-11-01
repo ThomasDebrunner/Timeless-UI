@@ -1,16 +1,16 @@
 import React from 'react'
-import Block from './Block'
+import Block from '../containers/Block'
 import {SortableContainer, SortableElement, arrayMove} from 'react-sortable-hoc';
 
-const SortableBlock = SortableElement(({block}) => (<Block name={block.name} duration={block.duration}></Block>))
+const SortableBlock = SortableElement(({block, idx}) => (<Block name={block.name} duration={block.duration} idx={idx}></Block>))
 
 const BlockList = SortableContainer(({blocks}) => {
   return (
-    <ul>
+    <div>
       {
-        blocks.map((block, idx) => (<SortableBlock block={block} index={idx} key={idx}/>))
+        blocks.map((block, idx) => (<SortableBlock block={block} idx={idx} index={idx} key={block.id}/>))
       }
-    </ul>
+    </div>
   )
 })
 

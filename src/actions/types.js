@@ -1,2 +1,3 @@
 export const FETCH_INFO = 'FETCH_INFO'
 export const REORDER_PROGRAM = 'REORDER_PROGRAM'
+export const RESIZE_BLOCK = 'RESIZE_BLOCK'
