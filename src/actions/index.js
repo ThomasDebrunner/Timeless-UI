@@ -1,7 +1,8 @@
 import {
   REORDER_PROGRAM,
   FETCH_INFO,
-  RESIZE_BLOCK
+  RESIZE_BLOCK,
+  REMOVE_BLOCK
 } from './types'
 
 export const reorderProgram = (ev) => ({
@@ -16,5 +17,10 @@ export const fetchInfo = (userId) => ({
 
 export const resizeBlock = (payload) => ({
   type: RESIZE_BLOCK,
+  payload
+})
+
+export const removeBlock = (payload) => ({
+  type: REMOVE_BLOCK,
   payload
 })

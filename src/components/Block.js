@@ -1,5 +1,6 @@
 import React from 'react';
 import {DraggableCore} from 'react-draggable'
+import Glyphicon from 'react-bootstrap/lib/Glyphicon'
 
 const MIN_DURATION = 100
 
@@ -46,11 +47,12 @@ class Block extends React.Component {
     return (
       <div className='block' style={this.getStyle(duration, scale)}>
         {name}
+        <Glyphicon glyph='trash' className='block-delete-button no-sort' onClick={this.props.removeBlock.bind(this)} />
         <DraggableCore
           onStart={this.resizeStart.bind(this)}
           onDrag={this.resize.bind(this)}
           onStop={this.resizeStop.bind(this)}>
-          <div className='block-resize-handle' onDrag={this.resize.bind(this)}></div>
+          <div className='block-resize-handle no-sort' onDrag={this.resize.bind(this)}></div>
         </DraggableCore>
       </div>
     )

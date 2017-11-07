@@ -15,8 +15,23 @@
   position: absolute;
   height: 100%;
   width: 5px;
-  background: darken( $red, 00% );
+  background: darken( $blue, 00% );
   right: 0;
   top: 0;
   cursor: ew-resize;
+  &:hover {
+    background: lighten( $blue, 10% );
+  }
+}
+
+.block-delete-button {
+  display: block;
+  cursor: pointer;
+  position: absolute;
+  top: 80px;
+  right: 10px;
+  font-size: 10px;
+  &:hover {
+    color: lighten(black, 10%);
+  }
 }

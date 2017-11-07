@@ -16,7 +16,7 @@ const BlockList = SortableContainer(({blocks}) => {
 
 
 const cancelSorting = (ev) => {
-  return ev.target.className === 'block-resize-handle'
+  return ev.target.className.includes('no-sort')
 }
 
 export default ({blocks, reorderProgram}) => {

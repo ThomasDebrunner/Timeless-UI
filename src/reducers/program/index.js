@@ -1,6 +1,7 @@
 import {
   REORDER_PROGRAM,
-  RESIZE_BLOCK
+  RESIZE_BLOCK,
+  REMOVE_BLOCK
 } from '../../actions/types'
 
 const initialState = {
@@ -30,6 +31,7 @@ const initialState = {
 
 export default (state = initialState, action) => {
   switch (action.type) {
+    // -------------------------------------------------------------------------------
     case REORDER_PROGRAM: {
       let blocks = [...state.blocks]
       blocks.splice(action.ev.newIndex, 0, blocks.splice(action.ev.oldIndex, 1)[0])
@@ -38,10 +40,21 @@ export default (state = initialState, action) => {
         blocks
       }
     }
+    // -------------------------------------------------------------------------------
     case RESIZE_BLOCK: {
       const {blockNr, newDuration} = action.payload
       let blocks = [...state.blocks]
       blocks[blockNr].duration = newDuration
+      return {
+        ...state,
+        blocks
+      }
+    }
+    // -------------------------------------------------------------------------------
+    case REMOVE_BLOCK: {
+      const {blockNr} = action.payload
+      let blocks = [...state.blocks]
+      blocks.splice(blockNr, 1)
       return {
         ...state,
         blocks
