@@ -1,8 +1,4 @@
-import {
-  REORDER_PROGRAM,
-  RESIZE_BLOCK,
-  REMOVE_BLOCK
-} from '../../actions/types'
+import {guid} from '../../util'
 
 const initialState = {
   blocks: [
@@ -32,7 +28,7 @@ const initialState = {
 export default (state = initialState, action) => {
   switch (action.type) {
     // -------------------------------------------------------------------------------
-    case REORDER_PROGRAM: {
+    case 'REORDER_PROGRAM': {
       let blocks = [...state.blocks]
       blocks.splice(action.ev.newIndex, 0, blocks.splice(action.ev.oldIndex, 1)[0])
       return {
@@ -41,7 +37,7 @@ export default (state = initialState, action) => {
       }
     }
     // -------------------------------------------------------------------------------
-    case RESIZE_BLOCK: {
+    case 'RESIZE_BLOCK': {
       const {blockNr, newDuration} = action.payload
       let blocks = [...state.blocks]
       blocks[blockNr].duration = newDuration
@@ -51,7 +47,7 @@ export default (state = initialState, action) => {
       }
     }
     // -------------------------------------------------------------------------------
-    case REMOVE_BLOCK: {
+    case 'REMOVE_BLOCK': {
       const {blockNr} = action.payload
       let blocks = [...state.blocks]
       blocks.splice(blockNr, 1)
@@ -60,6 +56,17 @@ export default (state = initialState, action) => {
         blocks
       }
     }
+    // -------------------------------------------------------------------------------
+    case 'ADD_BLOCK': {
+      return {
+        ...state,
+        blocks: [...state.blocks, {
+          id: guid(),
+          name: 'New Block',
+          duration: 10000
+        }]
+       }
+     }
 
 
     default:

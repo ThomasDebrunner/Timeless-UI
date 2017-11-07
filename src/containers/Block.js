@@ -3,6 +3,7 @@ import { resizeBlock, removeBlock } from '../actions'
 import Block from '../components/Block'
 
 const mapStateToProps = state => ({
+  scale: state.ui.scale
 })
 
 const mapDispatchToProps = (dispatch, ownProps) => ({

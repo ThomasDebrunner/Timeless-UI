@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { reorderProgram } from '../actions'
+import { reorderProgram, addBlock, zoomIn, zoomOut } from '../actions'
 import Timeline from '../components/Timeline'
 
 const mapStateToProps = state => ({
@@ -7,10 +7,13 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  reorderProgram: (ev) => dispatch(reorderProgram(ev))
+  reorderProgram: (ev) => dispatch(reorderProgram(ev)),
+  addBlock: () => dispatch(addBlock()),
+  zoomIn: () => dispatch(zoomIn()),
+  zoomOut: () => dispatch(zoomOut())
 })
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(Timeline)

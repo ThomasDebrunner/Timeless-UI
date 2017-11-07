@@ -1,26 +1,32 @@
-import {
-  REORDER_PROGRAM,
-  FETCH_INFO,
-  RESIZE_BLOCK,
-  REMOVE_BLOCK
-} from './types'
-
 export const reorderProgram = (ev) => ({
-  type: REORDER_PROGRAM,
+  type: 'REORDER_PROGRAM',
   ev
 })
 
 export const fetchInfo = (userId) => ({
-  type: FETCH_INFO,
+  type: 'FETCH_INFO',
   userId
 })
 
 export const resizeBlock = (payload) => ({
-  type: RESIZE_BLOCK,
+  type: 'RESIZE_BLOCK',
   payload
 })
 
 export const removeBlock = (payload) => ({
-  type: REMOVE_BLOCK,
+  type: 'REMOVE_BLOCK',
   payload
+})
+
+export const addBlock = () => ({
+  type: 'ADD_BLOCK'
+})
+
+
+export const zoomIn = () => ({
+  type: 'ZOOM_IN',
+})
+
+export const zoomOut = () => ({
+  type: 'ZOOM_OUT'
 })

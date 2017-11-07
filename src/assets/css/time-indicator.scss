@@ -1,0 +1,24 @@
+.tindicator-container {
+  width: auto;
+  height: 25px;
+  background: linear-gradient(to bottom, #ffffff 0%,#bcbcbc 100%);
+  overflow: hidden;
+}
+
+.tindicator-tick {
+  box-sizing: border-box;
+  display: inline-block;
+  border-left: 1px solid #9C9C9C;
+  height: 12px;
+  overflow: hidden;
+  vertical-align: bottom;
+
+}
+
+.tindicator-main-tick {
+  font-family: monospace;
+  font-size: 12px;
+  border-left-color: black;
+  height: 25px;
+  overflow: visible;
+}
