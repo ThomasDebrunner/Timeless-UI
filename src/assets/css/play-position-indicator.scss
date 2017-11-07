@@ -1,0 +1,16 @@
+.play-position-indicator-container {
+  position: absolute;
+  height: 130px;
+  border-left: 2px solid $red;
+  z-index: 1000;
+  width: 10px;
+  box-sizing: border-box;
+
+  & > span {
+    display: block;
+    height: 10px;
+    width: 10px;
+    background: $red;
+    transform: translateX(-50%) rotate(45deg);
+  }
+}

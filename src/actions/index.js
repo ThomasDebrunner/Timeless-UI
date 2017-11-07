@@ -30,3 +30,9 @@ export const zoomIn = () => ({
 export const zoomOut = () => ({
   type: 'ZOOM_OUT'
 })
+
+
+export const setPlayPosition = (payload) => ({
+  type: 'SET_PLAY_POSITION',
+  payload
+})

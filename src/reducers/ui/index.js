@@ -1,5 +1,6 @@
 const initialState = {
-  scale: 100
+  scale: 100,
+  playPosition: 10000
 }
 
 export default (state = initialState, action) => {
@@ -17,6 +18,13 @@ export default (state = initialState, action) => {
         ...state,
         scale: Math.max(state.scale-10, 50)
       }
+     }
+     // -------------------------------------------------------------------------------
+     case 'SET_PLAY_POSITION': {
+       return {
+         ...state,
+         playPosition: action.payload
+       }
      }
 
     default:

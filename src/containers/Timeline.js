@@ -3,7 +3,9 @@ import { reorderProgram, addBlock, zoomIn, zoomOut } from '../actions'
 import Timeline from '../components/Timeline'
 
 const mapStateToProps = state => ({
-  blocks: state.program.blocks
+  blocks: state.program.blocks,
+  playPosition: state.ui.playPosition,
+  scale: state.ui.scale
 })
 
 const mapDispatchToProps = dispatch => ({
