@@ -10,7 +10,7 @@ import Display from '../containers/Display'
 export default () => (
   <div>
     <Row>
-      <Col sm={12}><Display /></Col>
+      <Col sm={12}><Display selectable /></Col>
     </Row>
     <Row>
       <Col sm={4}><BezierEditor value={[0.2, 0.2, 0.8, 0.8]} /></Col>

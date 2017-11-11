@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { toggleSelection } from '../actions'
+import { rangeToSelection, rangeSelect, toggleSingleNoReset, toggleSingleReset } from '../actions'
 import Display from '../components/Display'
 
 const mapStateToProps = state => ({
@@ -7,7 +7,10 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  toggleSelection: payload => dispatch(toggleSelection(payload)),
+  rangeToSelection: coordinates => dispatch(rangeToSelection(coordinates)),
+  rangeSelect: coordinates => dispatch(rangeSelect(coordinates)),
+  toggleSingleNoReset: coordinates => dispatch(toggleSingleNoReset(coordinates)),
+  toggleSingleReset: coordinates => dispatch(toggleSingleReset(coordinates)),
 })
 
 export default connect(

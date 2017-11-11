@@ -3,6 +3,17 @@ const initialState = {
   playPosition: 10000,
   editorOpen: true,
   selection: {},
+  lastClick: { x: 0, y: 0 },
+}
+
+const getRangeKeys = (state, action) => {
+  const keys = []
+  for (let x = Math.min(state.lastClick.x, action.coordinates.x); x <= Math.max(state.lastClick.x, action.coordinates.x); x += 1) {
+    for (let y = Math.min(state.lastClick.y, action.coordinates.y); y <= Math.max(state.lastClick.y, action.coordinates.y); y += 1) {
+      keys.push(`${x}-${y}`)
+    }
+  }
+  return keys
 }
 
 export default (state = initialState, action) => {
@@ -43,11 +54,41 @@ export default (state = initialState, action) => {
       }
     }
     // -------------------------------------------------------------------------------
-    case 'TOGGLE_SELECTION': {
-      const key = `${action.payload.coordinates.x}-${action.payload.coordinates.y}`
+    case 'RANGE_TO_SELECTION': {
+      const selection = { ...state.selection }
+      getRangeKeys(state, action).forEach(key => (selection[key] = true))
       return {
         ...state,
-        selection: action.payload.reset ? { [key]: !state.selection[key] } : { ...state.selection, [key]: !state.selection[key] },
+        lastClick: action.coordinates,
+        selection,
+      }
+    }
+    // -------------------------------------------------------------------------------
+    case 'RANGE_SELECT': {
+      const selection = {}
+      getRangeKeys(state, action).forEach(key => (selection[key] = true))
+      return {
+        ...state,
+        lastClick: action.coordinates,
+        selection,
+      }
+    }
+    // -------------------------------------------------------------------------------
+    case 'TOGGLE_SINGLE_NO_RESET': {
+      const key = `${action.coordinates.x}-${action.coordinates.y}`
+      return {
+        ...state,
+        lastClick: action.coordinates,
+        selection: { ...state.selection, [key]: !state.selection[key] },
+      }
+    }
+    // -------------------------------------------------------------------------------
+    case 'TOGGLE_SINGLE_RESET': {
+      const key = `${action.coordinates.x}-${action.coordinates.y}`
+      return {
+        ...state,
+        lastClick: action.coordinates,
+        selection: { [key]: !state.selection[key] },
       }
     }
 
