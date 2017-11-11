@@ -9,6 +9,7 @@
   overflow: hidden;
   border: 1px solid #CDCDCD;
   cursor: move;
+  user-select: none;
 }
 
 .block-resize-handle {
@@ -30,6 +31,18 @@
   position: absolute;
   top: 80px;
   right: 10px;
+  font-size: 10px;
+  &:hover {
+    color: lighten(black, 10%);
+  }
+}
+
+.block-edit-button {
+  display: block;
+  cursor: pointer;
+  position: absolute;
+  top: 80px;
+  left: 10px;
   font-size: 10px;
   &:hover {
     color: lighten(black, 10%);

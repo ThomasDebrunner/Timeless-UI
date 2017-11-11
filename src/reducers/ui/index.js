@@ -1,6 +1,7 @@
 const initialState = {
   scale: 100,
   playPosition: 10000,
+  editorOpen: false,
 }
 
 export default (state = initialState, action) => {
@@ -24,6 +25,20 @@ export default (state = initialState, action) => {
       return {
         ...state,
         playPosition: action.payload,
+      }
+    }
+    // -------------------------------------------------------------------------------
+    case 'OPEN_EDITOR': {
+      return {
+        ...state,
+        editorOpen: true,
+      }
+    }
+    // -------------------------------------------------------------------------------
+    case 'CLOSE_EDITOR': {
+      return {
+        ...state,
+        editorOpen: false,
       }
     }
 

@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { resizeBlock, removeBlock } from '../actions'
+import { resizeBlock, removeBlock, openEditor } from '../actions'
 import Block from '../components/Block'
 
 const mapStateToProps = state => ({
@@ -9,6 +9,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = (dispatch, ownProps) => ({
   resizeBlock: newDuration => dispatch(resizeBlock({ blockNr: ownProps.idx, newDuration })),
   removeBlock: () => dispatch(removeBlock({ blockNr: ownProps.idx })),
+  openEditor: () => dispatch(openEditor()),
 })
 
 export default connect(

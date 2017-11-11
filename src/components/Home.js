@@ -1,9 +1,11 @@
 import React from 'react'
 import { Row, Col } from 'react-bootstrap'
+import Modal from 'react-modal'
+
 import Display from './Display'
 import Timeline from '../containers/Timeline'
 
-export default () => (
+export default ({ editorOpen, closeEditor }) => (
   <div className="custom-container">
     <Row>
       <Col xs={3}>
@@ -21,5 +23,15 @@ export default () => (
         <Timeline />
       </Col>
     </Row>
+    {/* EDITOR MODAL */}
+    <Modal
+      isOpen={editorOpen}
+      contentLabel="Modal"
+      onRequestClose={closeEditor}
+    >
+      <h1>Modal Content</h1>
+      <p>Etc.</p>
+    </Modal>
+
   </div>
 )

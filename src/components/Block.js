@@ -44,12 +44,17 @@ class Block extends React.Component {
     const { duration } = this.state
 
     return (
-      <div className="block" style={Block.generateStyle(duration, scale)}>
+      <div className="block" style={Block.generateStyle(duration, scale)} onDoubleClick={this.props.openEditor.bind(this)}>
         {name}
         <Glyphicon
           glyph="trash"
           className="block-delete-button no-sort"
           onClick={this.props.removeBlock.bind(this)}
+        />
+        <Glyphicon
+          glyph="pencil"
+          className="block-edit-button no-sort"
+          onClick={this.props.openEditor.bind(this)}
         />
         <DraggableCore
           onStart={this.resizeStart.bind(this)}

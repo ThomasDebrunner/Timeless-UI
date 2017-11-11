@@ -27,7 +27,7 @@ export default ({
     <div className="timeline-container">
       <PlayPositionIndicator left={playPosition / scale} />
       <TimeIndicator />
-      <BlockList blocks={blocks} axis="x" onSortEnd={reorderProgram} shouldCancelStart={cancelSorting} />
+      <BlockList blocks={blocks} axis="x" onSortEnd={reorderProgram} shouldCancelStart={cancelSorting} distance={10} />
     </div>
     <div className="spacer" />
     <ButtonGroup>
