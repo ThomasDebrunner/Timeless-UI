@@ -2,14 +2,14 @@ import { connect } from 'react-redux'
 import { fetchInfo } from '../actions'
 import Home from '../components/Home'
 
-const mapStateToProps = state => ({
+const mapStateToProps = () => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  fetchInfo: () => dispatch(fetchInfo('123'))
+  fetchInfo: () => dispatch(fetchInfo('123')),
 })
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(Home)

@@ -1,25 +1,26 @@
 import { createStore, applyMiddleware, compose } from 'redux'
 import { routerMiddleware } from 'react-router-redux'
 import createHistory from 'history/createBrowserHistory'
-import rootReducer from '../reducers'
 import createSagaMiddleware from 'redux-saga'
 import sagas from '../sagas'
+import rootReducer from '../reducers'
+
 
 export const history = createHistory()
 
-function onSagaError (e) {
+function onSagaError(e) {
   console.error(e, 'Saga uncaught exception')
 }
 
 const sagaMiddleware = createSagaMiddleware({
-  onError: onSagaError
+  onError: onSagaError,
 })
 
 const initialState = {}
 const enhancers = []
 const middleware = [
   routerMiddleware(history),
-  sagaMiddleware
+  sagaMiddleware,
 ]
 
 if (process.env.NODE_ENV === 'development') {
@@ -32,13 +33,13 @@ if (process.env.NODE_ENV === 'development') {
 
 const composedEnhancers = compose(
   applyMiddleware(...middleware),
-  ...enhancers
+  ...enhancers,
 )
 
 const store = createStore(
   rootReducer,
   initialState,
-  composedEnhancers
+  composedEnhancers,
 )
 
 sagaMiddleware.run(sagas)

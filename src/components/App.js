@@ -3,11 +3,11 @@ import { Switch, Route } from 'react-router-dom'
 import Home from '../containers/Home'
 import Nav from './Nav'
 
-const NotFound = () => <div className='container'>Not Found</div>
+const NotFound = () => <div className="container">Not Found</div>
 
 const App = () => (
   <div>
-    <header className='header'>
+    <header className="header">
       <Nav />
     </header>
     <main>
