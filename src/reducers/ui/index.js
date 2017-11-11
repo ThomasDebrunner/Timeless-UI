@@ -1,7 +1,8 @@
 const initialState = {
   scale: 100,
   playPosition: 10000,
-  editorOpen: false,
+  editorOpen: true,
+  selection: {},
 }
 
 export default (state = initialState, action) => {
@@ -39,6 +40,14 @@ export default (state = initialState, action) => {
       return {
         ...state,
         editorOpen: false,
+      }
+    }
+    // -------------------------------------------------------------------------------
+    case 'TOGGLE_SELECTION': {
+      const key = `${action.payload.coordinates.x}-${action.payload.coordinates.y}`
+      return {
+        ...state,
+        selection: action.payload.reset ? { [key]: !state.selection[key] } : { ...state.selection, [key]: !state.selection[key] },
       }
     }
 

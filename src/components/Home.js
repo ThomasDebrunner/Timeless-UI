@@ -4,6 +4,7 @@ import Modal from 'react-modal'
 
 import Display from './Display'
 import Timeline from '../containers/Timeline'
+import Editor from '../containers/Editor'
 
 export default ({ editorOpen, closeEditor }) => (
   <div className="custom-container">
@@ -28,9 +29,9 @@ export default ({ editorOpen, closeEditor }) => (
       isOpen={editorOpen}
       contentLabel="Modal"
       onRequestClose={closeEditor}
+      style={{ overlay: { zIndex: 1001 } }}
     >
-      <h1>Modal Content</h1>
-      <p>Etc.</p>
+      <Editor />
     </Modal>
 
   </div>
