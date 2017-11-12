@@ -9,7 +9,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = (dispatch, ownProps) => ({
   resizeBlock: newDuration => dispatch(resizeBlock({ blockNr: ownProps.idx, newDuration })),
   removeBlock: () => dispatch(removeBlock({ blockNr: ownProps.idx })),
-  openEditor: () => dispatch(openEditor()),
+  openEditor: () => dispatch(openEditor(ownProps.idx)),
 })
 
 export default connect(

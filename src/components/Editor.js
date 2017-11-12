@@ -1,5 +1,5 @@
 import React from 'react'
-import { Row, Col, Button, ButtonGroup } from 'react-bootstrap'
+import { Row, Col } from 'react-bootstrap'
 import BezierEditor from 'bezier-easing-editor'
 import Slider from 'react-rangeslider'
 import 'react-rangeslider/lib/index.css'
@@ -7,20 +7,23 @@ import 'react-rangeslider/lib/index.css'
 import Display from '../containers/Display'
 
 
-export default () => (
+export default ({
+  blockNr, frame, transition, lhandSliderPosition, shandSliderPosition, setAbsolute, setTransition,
+}) => (
   <div>
+    {blockNr}
     <Row>
-      <Col sm={12}><Display selectable /></Col>
+      <Col sm={12}><Display frame={frame} selectable /></Col>
     </Row>
     <Row>
-      <Col sm={4}><BezierEditor value={[0.2, 0.2, 0.8, 0.8]} /></Col>
+      <Col sm={4}><BezierEditor value={transition} onChange={setTransition} /></Col>
       <Col sm={8}>
         <div>
-          <Slider value={100} max={360} />
-          <Slider value={75} max={360} />
+          <Slider max={360} value={lhandSliderPosition} onChange={v => setAbsolute(v, true)} />
+          <Slider max={360} value={shandSliderPosition} onChange={v => setAbsolute(v, false)} />
         </div>
         <div>
-          <ButtonGroup>
+          { /* <ButtonGroup>
             <Button>ABSOLUTE</Button>
             <Button>RELATIVE</Button>
           </ButtonGroup>
@@ -28,7 +31,7 @@ export default () => (
           <ButtonGroup>
             <Button>CIRCLE</Button>
             <Button>STAR</Button>
-          </ButtonGroup>
+          </ButtonGroup> */ }
         </div>
       </Col>
     </Row>

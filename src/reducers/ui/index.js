@@ -4,6 +4,9 @@ const initialState = {
   editorOpen: true,
   selection: {},
   lastClick: { x: 0, y: 0 },
+  openBlockNr: 0,
+  lhandSliderPosition: 0,
+  shandSliderPosition: 0,
 }
 
 const getRangeKeys = (state, action) => {
@@ -44,6 +47,7 @@ export default (state = initialState, action) => {
       return {
         ...state,
         editorOpen: true,
+        openBlockNr: action.blockNr,
       }
     }
     // -------------------------------------------------------------------------------
@@ -60,6 +64,8 @@ export default (state = initialState, action) => {
       return {
         ...state,
         lastClick: action.coordinates,
+        shandSliderPosition: 0,
+        lhandSliderPosition: 0,
         selection,
       }
     }
@@ -70,6 +76,8 @@ export default (state = initialState, action) => {
       return {
         ...state,
         lastClick: action.coordinates,
+        shandSliderPosition: 0,
+        lhandSliderPosition: 0,
         selection,
       }
     }
@@ -79,6 +87,8 @@ export default (state = initialState, action) => {
       return {
         ...state,
         lastClick: action.coordinates,
+        shandSliderPosition: 0,
+        lhandSliderPosition: 0,
         selection: { ...state.selection, [key]: !state.selection[key] },
       }
     }
@@ -88,7 +98,16 @@ export default (state = initialState, action) => {
       return {
         ...state,
         lastClick: action.coordinates,
+        shandSliderPosition: 0,
+        lhandSliderPosition: 0,
         selection: { [key]: !state.selection[key] },
+      }
+    }
+    // -------------------------------------------------------------------------------
+    case 'SET_ABSOLUTE': {
+      return {
+        ...state,
+        [action.payload.lhand ? 'lhandSliderPosition' : 'shandSliderPosition']: action.payload.value,
       }
     }
 

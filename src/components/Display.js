@@ -2,23 +2,20 @@ import React from 'react'
 
 import Watch from './Watch'
 
+const grid = Array.from(
+  { length: 9 },
+  () => Array.from(
+    { length: 15 },
+    () => 0,
+  ),
+)
+
 export default ({
+  frame,
   size = 50, toggleSingleReset, rangeToSelection,
   rangeSelect,
   toggleSingleNoReset, selection, selectable = false,
 }) => {
-  const state = Array.from(
-    { length: 9 },
-    () => Array.from(
-      { length: 15 },
-      () => Array.from(
-        { length: 2 },
-        () => 0,
-      ),
-    ),
-  )
-
-
   const handleClick = (ev, x, y) => {
     if (!selectable) {
       return
@@ -36,23 +33,24 @@ export default ({
       toggleSingleReset({ x, y })
     }
   }
-
-
   return (
     <div className="display-container">
       {
-        state.map((line, rowIdx) => (
+        grid.map((line, rowIdx) => (
           <div className="display-row" key={rowIdx}>
             {
-            line.map((w, colIdx) => (
-              <Watch
-                lhand={w[0]}
-                shand={w[1]}
-                size={size}
-                key={colIdx}
-                selected={selection && selection[`${colIdx}-${rowIdx}`]}
-                onClick={e => handleClick(e, colIdx, rowIdx)}
-              />))
+            line.map((_, colIdx) => {
+              const key = `${colIdx}-${rowIdx}`
+              return (
+                <Watch
+                  lhand={frame && frame[key] && frame[key].lhand || 0}
+                  shand={frame && frame[key] && frame[key].shand || 0}
+                  size={size}
+                  key={colIdx}
+                  selected={selectable && selection && selection[key]}
+                  onClick={e => handleClick(e, colIdx, rowIdx)}
+                />)
+})
           }
           </div>))
       }
