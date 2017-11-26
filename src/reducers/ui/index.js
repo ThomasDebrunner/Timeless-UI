@@ -110,6 +110,13 @@ export default (state = initialState, action) => {
         [action.payload.lhand ? 'lhandSliderPosition' : 'shandSliderPosition']: action.payload.value,
       }
     }
+    // -------------------------------------------------------------------------------
+    case 'RESET': {
+      return {
+        ...state,
+        playPosition: 0,
+      }
+    }
 
     default:
       return state

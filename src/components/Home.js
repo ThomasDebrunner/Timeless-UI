@@ -2,7 +2,7 @@ import React from 'react'
 import { Row, Col } from 'react-bootstrap'
 import Modal from 'react-modal'
 
-import Display from '../containers/Display'
+import Display from '../containers/PlayDisplay'
 import Timeline from '../containers/Timeline'
 import Editor from '../containers/Editor'
 

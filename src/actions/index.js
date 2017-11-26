@@ -16,3 +16,5 @@ export const toggleSingleReset = coordinates => ({ type: 'TOGGLE_SINGLE_RESET', 
 export const setAbsolute = payload => ({ type: 'SET_ABSOLUTE', payload })
 export const setRelative = payload => ({ type: 'SET_ABSOLUTE', payload })
 export const setTransition = payload => ({ type: 'SET_TRANSITION', payload })
+
+export const reset = () => ({ type: 'RESET' })

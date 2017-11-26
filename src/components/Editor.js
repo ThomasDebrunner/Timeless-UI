@@ -4,7 +4,7 @@ import BezierEditor from 'bezier-easing-editor'
 import Slider from 'react-rangeslider'
 import 'react-rangeslider/lib/index.css'
 
-import Display from '../containers/Display'
+import Display from '../containers/EditorDisplay'
 
 
 export default ({

@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "bezier-easing": "^2.0.3",
     "bezier-easing-editor": "^0.7.0",
     "chart.js": "^2.7.1",
     "eslint": "^4.11.0",
