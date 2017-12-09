@@ -18,21 +18,22 @@ const BlockList = SortableContainer(({ blocks }) => (
 ))
 
 
-const cancelSorting = ev => ev.target.className.includes('no-sort')
-
 export default ({
-  blocks, playPosition, scale, reorderProgram, addBlock, zoomIn, zoomOut,
+  blocks, playPosition, scale, reorderProgram, addBlock, zoomIn, zoomOut, play, pause, reset, isPlaying,
 }) => (
   <div>
     <div className="timeline-container">
       <PlayPositionIndicator left={playPosition / scale} />
       <TimeIndicator />
-      <BlockList blocks={blocks} axis="x" onSortEnd={reorderProgram} shouldCancelStart={cancelSorting} distance={10} />
+      <BlockList blocks={blocks} axis="x" onSortEnd={reorderProgram} shouldCancelStart={ev => ev.target.className.includes('no-sort')} distance={10} />
     </div>
     <div className="spacer" />
-    <ButtonGroup>
-      <Button bsStyle="primary"><Glyphicon glyph="play" />Play</Button>
-      <Button><Glyphicon glyph="stop" />Reset</Button>
+    <ButtonGroup> {
+      !isPlaying ?
+        (<Button bsStyle="primary" onClick={play}><Glyphicon glyph="play" />Play</Button>) :
+        (<Button bsStyle="primary" onClick={pause}><Glyphicon glyph="pause" />Pause</Button>)
+    }
+      <Button onClick={reset}><Glyphicon glyph="stop" />Reset</Button>
     </ButtonGroup>
     <span style={{ width: '20px', display: 'inline-block' }} />
     <ButtonGroup>

@@ -18,3 +18,5 @@ export const setRelative = payload => ({ type: 'SET_ABSOLUTE', payload })
 export const setTransition = payload => ({ type: 'SET_TRANSITION', payload })
 
 export const reset = () => ({ type: 'RESET' })
+export const play = () => ({ type: 'PLAY' })
+export const pause = () => ({ type: 'PAUSE' })

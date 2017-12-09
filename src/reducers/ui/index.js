@@ -1,12 +1,13 @@
 const initialState = {
   scale: 100,
   playPosition: 10000,
-  editorOpen: true,
+  editorOpen: false,
   selection: {},
   lastClick: { x: 0, y: 0 },
   openBlockNr: 0,
   lhandSliderPosition: 0,
   shandSliderPosition: 0,
+  isPlaying: false,
 }
 
 const getRangeKeys = (state, action) => {
@@ -115,6 +116,29 @@ export default (state = initialState, action) => {
       return {
         ...state,
         playPosition: 0,
+        isPlaying: false,
+      }
+    }
+    // -------------------------------------------------------------------------------
+    case 'PLAY': {
+      return {
+        ...state,
+        isPlaying: true,
+      }
+    }
+    // -------------------------------------------------------------------------------
+    case 'PAUSE': {
+      return {
+        ...state,
+        isPlaying: false,
+      }
+    }
+    // -------------------------------------------------------------------------------
+    case 'TICK': {
+      return {
+        ...state,
+        isPlaying: true,
+        playPosition: state.playPosition + 10,
       }
     }
 

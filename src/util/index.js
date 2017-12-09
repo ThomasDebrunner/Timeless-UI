@@ -14,6 +14,20 @@ const grid = Array.from(
   ),
 )
 
+function shortestDistance(source, target) {
+  if (target >= source) {
+    if (Math.abs(target - source) <= Math.abs(target - (source + 360))) {
+      return target - source
+    }
+    return target - (source + 360)
+  }
+  if (Math.abs(target - source) <= Math.abs((target + 360) - source)) {
+    return target - source
+  }
+  return (target + 360) - source
+}
+
+
 export function getFrame(program, time) {
   // identify the relevant blocks
   let acc = 0
@@ -42,9 +56,14 @@ export function getFrame(program, time) {
     const targetShand = (block.frame[key] && block.frame[key].shand) || 0
     const sourceLhand = (prevFrame[key] && prevFrame[key].lhand) || 0
     const sourceShand = (prevFrame[key] && prevFrame[key].shand) || 0
+
+    const travelLhand = shortestDistance(sourceLhand, targetLhand)
+    const travelShand = shortestDistance(sourceShand, targetShand)
+
+
     newFrame[key] = {
-      shand: sourceShand + (targetShand - sourceShand) * transitionPercentage,
-      lhand: sourceLhand + (targetLhand - sourceLhand) * transitionPercentage,
+      shand: (sourceShand + travelShand * transitionPercentage) % 360,
+      lhand: (sourceLhand + travelLhand * transitionPercentage) % 360,
     }
   }))
   return newFrame
