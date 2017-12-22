@@ -5,6 +5,7 @@ import TimeIndicator from '../components/TimeIndicator'
 const mapStateToProps = state => ({
   scale: state.ui.scale,
   playPosition: state.ui.playPosition,
+  programLength: state.program.blocks.reduce((sum, curr) => sum + curr.duration, 0),
 })
 
 const mapDispatchToProps = dispatch => ({

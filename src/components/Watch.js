@@ -18,7 +18,7 @@ export default ({
     width: '100%',
     height: '100%',
     position: 'absolute',
-    transform: `rotate(${angle}deg)`,
+    transform: `rotate(${(angle + 90) % 360}deg)`,
   })
 
   const getHandStyle = short => ({

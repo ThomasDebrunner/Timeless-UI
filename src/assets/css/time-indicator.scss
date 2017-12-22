@@ -1,5 +1,4 @@
 .tindicator-container {
-  width: auto;
   height: 25px;
   background: linear-gradient(to bottom, #ffffff 0%,#bcbcbc 100%);
   overflow: hidden;
@@ -17,8 +16,11 @@
 
 .tindicator-main-tick {
   font-family: monospace;
-  font-size: 12px;
+  font-size: 11px;
   border-left-color: black;
   height: 25px;
   overflow: visible;
+  & > p {
+    transform: rotate(90deg);
+  }
 }
